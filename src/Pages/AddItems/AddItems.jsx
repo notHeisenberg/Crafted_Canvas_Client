@@ -5,23 +5,24 @@ import Swal from "sweetalert2";
 const AddItems = ({ update }) => {
 
     const { user } = useContext(AuthContext);
+
     const handleAddProduct = (e) => {
         e.preventDefault();
 
-        const name = e.target.name.value;
+        const item_name = e.target.name.value;
         const image = e.target.image.value;
-        const subcategory = e.target.subcategory.value;
-        const description = e.target.description.value;
+        const subcategory_Name = e.target.subcategory.value;
+        const short_description = e.target.description.value;
         const price = e.target.price.value;
         const rating = parseFloat(e.target.rating.value);
         const customization = e.target.customization.value;
-        const processingTime = e.target.processingTime.value;
-        const status = e.target.status.value;
+        const processing_time = e.target.processingTime.value;
+        const stockStatus = e.target.status.value;
         const email = user.email;
 
-        console.log(image, name, subcategory, description, price, rating, customization, processingTime, status, email)
+        console.log(image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email)
 
-        const info = { image, name, subcategory, description, price, rating, customization, processingTime, status, email };
+        const info = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email };
 
         fetch("http://localhost:5000/crafts", {
             method: "POST",
@@ -49,6 +50,7 @@ const AddItems = ({ update }) => {
     const handleUpdateProduct = (e) => {
         e.preventDefault();
 
+
         const name = e.target.name.value;
         const image = e.target.image.value;
         const subcategory = e.target.subcategory.value;
@@ -64,8 +66,8 @@ const AddItems = ({ update }) => {
 
         const info = { image, name, subcategory, description, price, rating, customization, processingTime, status, email };
 
-        // fetch("http://localhost:5000/crafts", {
-        //     method: "POST",
+        // fetch(`http://localhost:5000/crafts/$`, {
+        //     method: "PUT",
         //     headers: { "Content-type": "application/json" },
         //     body: JSON.stringify(info)
         // })
@@ -74,7 +76,7 @@ const AddItems = ({ update }) => {
         //         if (data?.insertedId) {
         //             Swal.fire({
         //                 title: 'Success!',
-        //                 text: 'Item added succesfully',
+        //                 text: 'Item Updated succesfully',
         //                 icon: 'success',
         //                 showConfirmButton: false,
         //                 timer: 2000
@@ -116,7 +118,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Name"
                                 id="name"
                                 name="name"
-                                required
+                                {...(update ? {} : { required: true })}
                             />
 
                             <label
@@ -131,7 +133,7 @@ const AddItems = ({ update }) => {
                                 className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
                                 type="text"
                                 placeholder="Select Brand"
-                                required
+                                {...(update ? {} : { required: true })}
                             >
                                 <option value="Embroidery" >
                                     Embroidery
@@ -165,7 +167,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Enter Price"
                                 id="Price"
                                 name="price"
-                                required
+                                {...(update ? {} : { required: true })}
                             />
                             <label className="block mb-2 mt-4 dark:text-white" htmlFor="customization">
                                 Customization
@@ -176,7 +178,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Customization"
                                 id="type"
                                 name="customization"
-                                required
+                                {...(update ? {} : { required: true })}
                             />
                             <label className="block mb-2 mt-4 dark:text-white" htmlFor="stockStatus">
                                 Stock Status
@@ -187,7 +189,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Stock Status"
                                 id="type"
                                 name="status"
-                                required
+                                {...(update ? {} : { required: true })}
                             />
                         </div>
                         {/* Right side */}
@@ -201,7 +203,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Enter Image URL"
                                 id="image"
                                 name="image"
-                                required
+                                {...(update ? {} : { required: true })}
                             />
                             <label className="block mb-2 mt-4 dark:text-white" htmlFor="type">
                                 Short description
@@ -212,7 +214,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Short description"
                                 id="type"
                                 name="description"
-                                required
+                                {...(update ? {} : { required: true })}
                             />
 
                             <label
@@ -231,7 +233,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Enter Rating"
                                 id="rating"
                                 name="rating"
-                                required
+                                {...(update ? {} : { required: true })}
                             />
                             <label className="block mb-2 mt-4 dark:text-white" htmlFor="Processing time">
                                 Processing time
@@ -242,7 +244,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Processing Time"
                                 id="type"
                                 name="processingTime"
-                                required
+                                {...(update ? {} : { required: true })}
                             />
                         </div>
                     </div>

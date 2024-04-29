@@ -24,7 +24,8 @@ const router = createBrowserRouter([
             },
             {
                 path: "/all-items",
-                element: <AllItems></AllItems>
+                element: <AllItems></AllItems>,
+                loader: () => fetch('http://localhost:5000/crafts')
             },
             {
                 path: "/add-items",
@@ -32,7 +33,8 @@ const router = createBrowserRouter([
             },
             {
                 path: "/update-items",
-                element: <PrivateRoute><AddItems update={true}></AddItems></PrivateRoute>
+                element: <PrivateRoute><AddItems update={true}></AddItems></PrivateRoute>,
+
             },
             {
                 path: "/my-items",
