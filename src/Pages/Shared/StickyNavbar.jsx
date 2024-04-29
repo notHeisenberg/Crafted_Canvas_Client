@@ -31,6 +31,12 @@ export function StickyNavbar() {
                 : notActive
         } to={"/add-items"} >Add Items</NavLink></li>}
 
+        {user && <li ><NavLink className={({ isActive }) =>
+            isActive
+                ? Active
+                : notActive
+        } to={"/update-items"} >Update Items</NavLink></li>}
+
         {
             user &&
             <li ><NavLink className={({ isActive }) =>

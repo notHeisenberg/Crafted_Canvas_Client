@@ -13,7 +13,7 @@ const AddItems = ({ update }) => {
         const subcategory = e.target.subcategory.value;
         const description = e.target.description.value;
         const price = e.target.price.value;
-        const rating = e.target.rating.value;
+        const rating = parseFloat(e.target.rating.value);
         const customization = e.target.customization.value;
         const processingTime = e.target.processingTime.value;
         const status = e.target.status.value;
@@ -40,10 +40,51 @@ const AddItems = ({ update }) => {
 
                     })
                 }
+                e.target.reset()
             })
 
     };
 
+
+    const handleUpdateProduct = (e) => {
+        e.preventDefault();
+
+        const name = e.target.name.value;
+        const image = e.target.image.value;
+        const subcategory = e.target.subcategory.value;
+        const description = e.target.description.value;
+        const price = e.target.price.value;
+        const rating = parseFloat(e.target.rating.value);
+        const customization = e.target.customization.value;
+        const processingTime = e.target.processingTime.value;
+        const status = e.target.status.value;
+        const email = user.email;
+
+        console.log(image, name, subcategory, description, price, rating, customization, processingTime, status, email)
+
+        const info = { image, name, subcategory, description, price, rating, customization, processingTime, status, email };
+
+        // fetch("http://localhost:5000/crafts", {
+        //     method: "POST",
+        //     headers: { "Content-type": "application/json" },
+        //     body: JSON.stringify(info)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         if (data?.insertedId) {
+        //             Swal.fire({
+        //                 title: 'Success!',
+        //                 text: 'Item added succesfully',
+        //                 icon: 'success',
+        //                 showConfirmButton: false,
+        //                 timer: 2000
+
+        //             })
+        //         }
+        //         e.target.reset()
+        //     })
+
+    };
 
     return (
         <div className="gadgetContainer pt-10">
@@ -63,7 +104,7 @@ const AddItems = ({ update }) => {
                     </p>
                 </div>
                 {/* form */}
-                <form onSubmit={handleAddProduct}>
+                <form onSubmit={update ? handleUpdateProduct : handleAddProduct}>
                     <div className="flex gap-8 ">
                         <div className="flex-1">
                             <label className="block mb-2 dark:text-white" htmlFor="name">
@@ -75,6 +116,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Name"
                                 id="name"
                                 name="name"
+                                required
                             />
 
                             <label
@@ -89,23 +131,24 @@ const AddItems = ({ update }) => {
                                 className="w-full p-2 border rounded-md focus:outline-[#FF497C]"
                                 type="text"
                                 placeholder="Select Brand"
+                                required
                             >
-                                <option value="Test" >
+                                <option value="Embroidery" >
                                     Embroidery
                                 </option>
-                                <option value="Test2" >
+                                <option value="Knitting & Crocheting" >
                                     Knitting & Crocheting
                                 </option>
-                                <option value="Test3" >
+                                <option value="Quilting" >
                                     Quilting
                                 </option>
-                                <option value="Test3" >
+                                <option value="Beadwork" >
                                     Beadwork
                                 </option>
-                                <option value="Test3" >
+                                <option value="Tie-Dyeing" >
                                     Tie-Dyeing
                                 </option>
-                                <option value="Test3" >
+                                <option value="Macrame" >
                                     Macrame
                                 </option>
                             </select>
@@ -122,6 +165,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Enter Price"
                                 id="Price"
                                 name="price"
+                                required
                             />
                             <label className="block mb-2 mt-4 dark:text-white" htmlFor="customization">
                                 Customization
@@ -132,6 +176,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Customization"
                                 id="type"
                                 name="customization"
+                                required
                             />
                             <label className="block mb-2 mt-4 dark:text-white" htmlFor="stockStatus">
                                 Stock Status
@@ -142,6 +187,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Stock Status"
                                 id="type"
                                 name="status"
+                                required
                             />
                         </div>
                         {/* Right side */}
@@ -155,6 +201,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Enter Image URL"
                                 id="image"
                                 name="image"
+                                required
                             />
                             <label className="block mb-2 mt-4 dark:text-white" htmlFor="type">
                                 Short description
@@ -165,6 +212,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Short description"
                                 id="type"
                                 name="description"
+                                required
                             />
 
                             <label
@@ -178,10 +226,12 @@ const AddItems = ({ update }) => {
                                 maxLength={5}
                                 max={5}
                                 min={0}
+                                step="0.1"
                                 type="number"
                                 placeholder="Enter Rating"
                                 id="rating"
                                 name="rating"
+                                required
                             />
                             <label className="block mb-2 mt-4 dark:text-white" htmlFor="Processing time">
                                 Processing time
@@ -192,6 +242,7 @@ const AddItems = ({ update }) => {
                                 placeholder="Processing Time"
                                 id="type"
                                 name="processingTime"
+                                required
                             />
                         </div>
                     </div>
@@ -199,7 +250,7 @@ const AddItems = ({ update }) => {
                     <input
                         className="px-4 w-full py-2 mt-4 rounded hover:bg-[#ab3154]  bg-[#FF497C] duration-200 text-white cursor-pointer font-semibold"
                         type="submit"
-                        value="Add Product"
+                        value={update ? "Update Product" : "Add Product"}
                     />
                 </form>
             </div>

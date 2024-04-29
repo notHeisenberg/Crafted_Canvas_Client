@@ -2,14 +2,14 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../../../firebase.config";
-// import useFetchedData from "../../Hooks/useFetchedData/useFetchedData";
+import useFetchedData from "../../Hooks/useFetchedData/useFetchedData";
 
 export const AuthContext = createContext(null)
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
-    // const { data } = useFetchedData()
+    const { data } = useFetchedData()
     // console.log(data)
 
     const googleProvider = new GoogleAuthProvider()
@@ -59,6 +59,7 @@ const AuthProvider = ({ children }) => {
         googleSignUp,
         githubSignIn,
         logout,
+        data
 
     }
     return (
