@@ -24,20 +24,20 @@ const MyItems = () => {
         e.preventDefault();
 
 
-        const name = e.target.name.value;
+        const item_name = e.target.name.value;
         const image = e.target.image.value;
-        const subcategory = e.target.subcategory.value;
-        const description = e.target.description.value;
+        const subcategory_Name = e.target.subcategory.value;
+        const short_description = e.target.description.value;
         const price = e.target.price.value;
         const rating = parseFloat(e.target.rating.value);
         const customization = e.target.customization.value;
-        const processingTime = e.target.processingTime.value;
-        const status = e.target.status.value;
+        const processing_time = e.target.processingTime.value;
+        const stockStatus = e.target.status.value;
         const email = user.email;
 
-        console.log(image, name, subcategory, description, price, rating, customization, processingTime, status, email)
+        console.log(image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email)
 
-        const info = { image, name, subcategory, description, price, rating, customization, processingTime, status, email };
+        const info = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email };
 
         fetch(`http://localhost:5000/crafts/${selectedItem._id}`, {
             method: "PUT",
@@ -48,8 +48,12 @@ const MyItems = () => {
             .then(data => {
                 console.log(data)
                 if (data?.modifiedCount > 0) {
+                    setItem(prevItems =>
+                        prevItems.map(item => (item._id === selectedItem._id ? selectedItem : item))
+                    );
+                    setIsModalOpen(false)
                     Swal.fire({
-                        title: "Custom width, padding, color, background.",
+                        title: "Craft Updated succesfully",
                         width: 600,
                         padding: "3em",
                         color: "#716add",
@@ -62,10 +66,9 @@ const MyItems = () => {
                         `
                     });
                 }
-                // e.target.reset()
-                // setIsModalOpen(false)
             })
 
+        e.target.reset()
     };
 
     // Delete item
@@ -90,6 +93,9 @@ const MyItems = () => {
                     .then(data => {
                         console.log(data)
                         if (data.deletedCount > 0) {
+                            setItem(prevItems =>
+                                prevItems.filter(item => item._id !== _id)
+                            );
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "Your craft has been deleted.",
