@@ -44,7 +44,7 @@ const Banner = ({data}) => {
                             key={idx}
                             className='hover:shadow-xl hover:shadow-blue-300 relative'
                         >
-                            <div className='absolute bottom-4 p-2 text-white  font-medium text-2xl ' >
+                            <div className='absolute bottom-4 p-2  font-medium text-2xl ' >
 
                                 <h1>{craft.item_name} </h1>
                                 <div className='flex gap-2 items-center ' >
@@ -53,7 +53,7 @@ const Banner = ({data}) => {
                                     <p
                                         className={craft.status === 'In stock' ? `font-serif  btn btn-sm btn-warning`
                                             :
-                                            `font-serif  btn btn-sm btn-error`
+                                            `font-serif  btn btn-sm `
                                         } >
                                         {craft.stockStatus}
                                     </p>
