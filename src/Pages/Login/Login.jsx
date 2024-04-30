@@ -55,7 +55,7 @@ const Login = () => {
                     createdAt: result.user.metadata.createdAt,
                     lastLoginAt: result.user.metadata.lastLoginAt
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://art-craft-store-server-eta.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -89,7 +89,7 @@ const Login = () => {
                     createdAt: result.user.metadata.createdAt,
                     lastLoginAt: result.user.metadata.lastLoginAt
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://art-craft-store-server-eta.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -119,7 +119,7 @@ const Login = () => {
                     createdAt: result.user.metadata.createdAt,
                     lastLoginAt: result.user.metadata.lastLoginAt
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://art-craft-store-server-eta.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

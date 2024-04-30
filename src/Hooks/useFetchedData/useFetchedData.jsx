@@ -6,7 +6,7 @@ const useFetchedData = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:5000/crafts')
+        fetch('https://art-craft-store-server-eta.vercel.app/crafts')
             .then((res) => res.json())
             .then((data) => setData(data))
 

@@ -63,7 +63,7 @@ const CraftItems = ({ item }) => {
                             <h1>{rating}</h1>
                         </div>
                         <div className="flex gap-2 items-center">
-                            <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/length-ft.png" alt="length-ft" />
+                            {/* <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/length-ft.png" alt="length-ft" /> */}
                             <p>{processing_time}</p>
                         </div>
                     </div>

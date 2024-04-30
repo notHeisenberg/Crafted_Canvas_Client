@@ -24,7 +24,7 @@ const AddItems = ({ update }) => {
 
         const info = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email };
 
-        fetch("http://localhost:5000/crafts", {
+        fetch("https://art-craft-store-server-eta.vercel.app/crafts", {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(info)
@@ -66,7 +66,7 @@ const AddItems = ({ update }) => {
 
         const info = { image, name, subcategory, description, price, rating, customization, processingTime, status, email };
 
-        // fetch(`http://localhost:5000/crafts/$`, {
+        // fetch(`https://art-craft-store-server-eta.vercel.app/crafts/$`, {
         //     method: "PUT",
         //     headers: { "Content-type": "application/json" },
         //     body: JSON.stringify(info)

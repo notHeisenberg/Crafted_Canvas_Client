@@ -31,11 +31,11 @@ export function StickyNavbar() {
                 : notActive
         } to={"/add-items"} >Add Items</NavLink></li>}
 
-        {user && <li ><NavLink className={({ isActive }) =>
+        {/* {user && <li ><NavLink className={({ isActive }) =>
             isActive
                 ? Active
                 : notActive
-        } to={"/update-items"} >Update Items</NavLink></li>}
+        } to={"/update-items"} >Update Items</NavLink></li>} */}
 
         {
             user &&
@@ -101,7 +101,7 @@ export function StickyNavbar() {
                                         <Avatar src={user?.photoURL} alt="avatar" size="md" className="btn btn-ghost w-12 rounded-full border-2 border-blue-300 p-0.5" />
 
                                     </Tooltip>
-                                    <Link className="btn btn-sm btn-outline text-red-500" on onClick={logout} to="/">Logout</Link>
+                                    <Link to={'/'} className="btn btn-sm btn-outline text-red-500" on onClick={logout} to="/">Logout</Link>
                                 </div>
                                 :
                                 <div className="navbar-end">

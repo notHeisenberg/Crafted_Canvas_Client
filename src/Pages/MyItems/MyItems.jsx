@@ -39,7 +39,7 @@ const MyItems = () => {
 
         const info = { image, item_name, subcategory_Name, short_description, price, rating, customization, processing_time, stockStatus, email };
 
-        fetch(`http://localhost:5000/crafts/${selectedItem._id}`, {
+        fetch(`https://art-craft-store-server-eta.vercel.app/crafts/${selectedItem._id}`, {
             method: "PUT",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(info)
@@ -85,7 +85,7 @@ const MyItems = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/crafts/${_id}`, {
+                fetch(`https://art-craft-store-server-eta.vercel.app/crafts/${_id}`, {
                     method: "DELETE"
                 }
                 )
@@ -110,7 +110,7 @@ const MyItems = () => {
 
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/crafts/user/${user?.email}`)
+        fetch(`https://art-craft-store-server-eta.vercel.app/crafts/user/${user?.email}`)
             .then(res => res.json())
             .then(data => setItem(data))
     }, [user])

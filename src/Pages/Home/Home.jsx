@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import CraftItems from "../../Components/CraftItems/CraftItems";
 import Banner from "../../Components/Banner/Banner";
+import Art_Craft_Categories from "../../Components/Art&CraftCategories/Art_Craft_Categories";
 
 
 const Home = () => {
@@ -25,6 +26,7 @@ const Home = () => {
                     }
                 </div>
             </div>
+            <Art_Craft_Categories></Art_Craft_Categories>
         </>
 
     );

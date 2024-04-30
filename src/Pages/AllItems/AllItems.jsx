@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const AllItems = () => {
     const items = useLoaderData()
-    console.log(items)
+    // console.log(items)
     return (
         <div className="overflow-x-auto container mx-auto">
             <table className="table ">

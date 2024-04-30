@@ -64,7 +64,7 @@ const Banner = ({data}) => {
                                 </div>
                             </div>
 
-                            <Link to={`/craft-details/${craft.id}`}>
+                            <Link to={`/craft-details/${craft._id}`}>
 
                                 <img className='h-full hover:cursor-pointer' src={craft.image} />
                             </Link>
